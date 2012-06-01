@@ -1,0 +1,12 @@
+tests:
+  - name: Array of objects
+    desc: Indexes are zero-based.
+    data: { data: [ { item: 'eggs' }, { item: 'flour' }, { item: 'milk' } ]}
+    template: |
+        {{#data}}
+        {{index}}: {{item}}
+        {{/data}}
+    expected: |
+        0: eggs
+        1: flour
+        2: milk

@@ -1,0 +1,36 @@
+tests:
+  - name: Array of strings
+    desc: Indexes are zero-based.
+    data: { data: [ 'eggs', 'flour', 'milk' ] }
+    template: |
+        {{#data}}
+        {{index}}: {{.}}
+        {{/data}}
+    expected: |
+        0: eggs
+        1: flour
+        2: milk
+
+  - name: Array of objects
+    desc: Indexes are zero-based.
+    data: { data: [ { item: 'eggs' }, { item: 'flour' }, { item: 'milk' } ]}
+    template: |
+        {{#data}}
+        {{index}}: {{item}}
+        {{/data}}
+    expected: |
+        0: eggs
+        1: flour
+        2: milk
+  
+  - name: Length of empty array
+    desc: Empty array has count of zero.
+    data: { data: [ ] }
+    template: '{{data.length}}'
+    expected: '0'
+
+  - name: Length of populated array
+    desc: Array length equals number of elements.
+    data: { data: [ 'cat', 'dog', 'fish', 'cow' ] }
+    template: '{{data.length}}'
+    expected: '4'
